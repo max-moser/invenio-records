@@ -114,7 +114,8 @@ class RecordMetadataBase(db.Timestamp):
     @classmethod
     def encode(cls, value):
         """Encode a JSON document."""
-        data = deepcopy(value)
+        # data = deepcopy(value)
+        data = value.copy() if value else value
         return cls.encoder.encode(data) if cls.encoder else data
 
     @classmethod
